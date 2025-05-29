@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # Set the app title 
-st.title('PENCARIAN ENGINEER DAFFIM SDN BHD !!') 
+st.title('PENCARIAN ENGINEER DAFFIM SDN BHD!!') 
 
 # Add a welcome message 
 st.write('Welcome to DAFFIM SDN BHD!') 
