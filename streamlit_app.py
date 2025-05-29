@@ -21,11 +21,16 @@ if response.status_code == 200:
     rates = data.get('rates', {})
 
     # Dropdown (selectbox) to choose a currency
-    selected_currency = st.selectbox('Choose a currency to view exchange rate against MYR:', sorted(rates.keys()))
+    selected_currency = st.selectbox('Choose a currency to convert MYR to:', sorted(rates.keys()))
 
-    # Display the exchange rate
-    if selected_currency:
-        exchange_rate = rates[selected_currency]
-        st.success(f"1 MYR = {exchange_rate} {selected_currency}")
+    # User input: amount in MYR
+    amount_myr = st.number_input('Enter amount in MYR:', min_value=0.0, value=1.0, step=0.1)
+
+    # Conversion and result display
+    if selected_currency and amount_myr:
+        rate = rates[selected_currency]
+        converted_amount = amount_myr * rate
+        st.success(f"{amount_myr:.2f} MYR = {converted_amount:.2f} {selected_currency}")
+
 else:
     st.error(f"API call failed with status code: {response.status_code}")
